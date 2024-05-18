@@ -1,0 +1,43 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Progers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:minInclusive value="1"/>
+                            <xs:maxInclusive value="999"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="progList" type="ProgList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="ProgList">
+        <xs:sequence>
+            <xs:element name="Lead" type="Lead"/>
+            <xs:element name="Middle" type="Middle"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Lead">
+        <xs:sequence>
+            <xs:element name="FIO" type="xs:string"/>
+            <xs:element name="salary" type="xs:decimal"/>
+            <xs:element name="position" type="Position"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Middle">
+        <xs:sequence>
+            <xs:element name="FIO" type="xs:string"/>
+            <xs:element name="salary" type="xs:decimal"/>
+            <xs:element name="position" type="Position"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="Position">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Position.LEAD_CAS"/>
+            <xs:enumeration value="Position.MIDDLE_CASE"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

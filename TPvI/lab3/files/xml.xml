@@ -1,0 +1,15 @@
+<Progers>
+    <id>2</id>
+    <progList>
+        <Lead>
+            <FIO>Cdflbk Efkng Serg</FIO>
+            <salary>123.35</salary>
+            <position>Position.LEAD_CAS</position>
+        </Lead>
+        <Middle>
+            <FIO>Mloekn Foekrbt Fknrb</FIO>
+            <salary>234.12</salary>
+            <position>Position.MIDDLE_CASE</position>
+        </Middle>
+    </progList>
+</Progers>
