@@ -1,0 +1,31 @@
+﻿Сборка начата 02.05.2024 20:17:21.
+Уровень детализации журнала: Normal.     1>Проект "D:\лабы\ОКГ\8_2\lab_08\Lab01\Lab01.vcxproj" в узле 2 (целевые объекты Build).
+     1>PrepareForBuild:
+         Структурированный вывод включен. Форматирование диагностики компилятора будет отражать иерархию ошибок. Подробнее см. https://aka.ms/cpp/structured-output.
+       InitializeBuildStatus:
+         Обращение к "x64\Debug\Lab06.tlog\unsuccessfulbuild".
+       ClCompile:
+         Для всех выходных данных обновления не требуется.
+         Для всех выходных данных обновления не требуется.
+       ResourceCompile:
+         Для всех выходных данных обновления не требуется.
+       Link:
+         C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\bin\HostX64\x64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\лабы\ОКГ\8_2\lab_08\x64\Debug\Lab06.exe" /INCREMENTAL /ILK:"x64\Debug\Lab06.ilk" /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\Include\Manifest\dpiaware.manifest" /DEBUG:FULL /PDB:"D:\лабы\ОКГ\8_2\lab_08\x64\Debug\Lab06.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\лабы\ОКГ\8_2\lab_08\x64\Debug\Lab06.lib" /MACHINE:X64 x64\Debug\Lab01.res
+         x64\Debug\ChildView.obj
+         x64\Debug\CMatrix.obj
+         x64\Debug\Lab06.obj
+         x64\Debug\LibGraph.obj
+         x64\Debug\LibSurface.obj
+         x64\Debug\MainFrm.obj
+         x64\Debug\stdafx.obj
+         Lab01.vcxproj -> D:\лабы\ОКГ\8_2\lab_08\x64\Debug\Lab06.exe
+       FinalizeBuildStatus:
+         Файл "x64\Debug\Lab06.tlog\unsuccessfulbuild" удаляется.
+         Обращение к "x64\Debug\Lab06.tlog\Lab06.lastbuildstate".
+     1>Сборка проекта "D:\лабы\ОКГ\8_2\lab_08\Lab01\Lab01.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+    Предупреждений: 0
+    Ошибок: 0
+
+Прошло времени 00:00:00.50
