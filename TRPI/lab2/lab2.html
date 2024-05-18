@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lab2.css">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div class="main-block">
+            <div>
+                <label>Высота напёрстка:</label>
+                <input class="height" type="text">
+            </div>
+            <div>
+                <label>Ширина напёрстка:</label>
+                <input class="width" type="text">
+            </div>
+            <div>
+                <label>Диаметр шарика:</label>
+                <input class="diametr" type="text">
+            </div>
+        </div>
+        <div class="sec-block">
+            <label>Результат:</label>
+            <input class="result" type="text" value="0">
+            <p class="endOfGame"></p>
+        </div>
+    </form>
+    <button onclick="return doGame()" class="button">Сохранить</button>
+    <div class="container">
+        <img onclick="upCup(this)" class="image1" src="наперсток.png"/>
+        <img onclick="upCup(this)" class="image2" src="наперсток.png"/>
+        <img onclick="upCup(this)" class="image3" src="наперсток.png"/>
+        <img class="ball" src="мяч.png"/>
+    </div>
+    <div onclick="funcClear()" class="newButton">
+        <button >Обновить</button>
+    </div>
+    <script src="lab2.js"></script>
+</body>
+</html>
