@@ -1,0 +1,10 @@
+D:\лабы\ООП\lab1\Calculator\Calculator\bin\Debug\Calculator.exe.config
+D:\лабы\ООП\lab1\Calculator\Calculator\bin\Debug\Calculator.exe
+D:\лабы\ООП\lab1\Calculator\Calculator\bin\Debug\Calculator.pdb
+D:\лабы\ООП\lab1\Calculator\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
+D:\лабы\ООП\lab1\Calculator\Calculator\obj\Debug\Calculator.Calculator.resources
+D:\лабы\ООП\lab1\Calculator\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+D:\лабы\ООП\lab1\Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
+D:\лабы\ООП\lab1\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+D:\лабы\ООП\lab1\Calculator\Calculator\obj\Debug\Calculator.exe
+D:\лабы\ООП\lab1\Calculator\Calculator\obj\Debug\Calculator.pdb
