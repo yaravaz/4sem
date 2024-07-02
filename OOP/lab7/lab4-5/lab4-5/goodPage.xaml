@@ -1,0 +1,126 @@
+﻿<Window x:Class="lab4_5.goodPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:lab4_5"  ResizeMode="NoResize"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Title="goodPage" Height="600" Width="400">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Command.CloseCommand" Executed="Close"></CommandBinding>
+        <CommandBinding Command="local:Command.AddCommand" Executed="AddProduct"></CommandBinding>
+        <CommandBinding Command="local:Command.AddImageCommand" Executed="AddImage"></CommandBinding>
+        <CommandBinding Command="local:Command.UpdateCommand" Executed="EditBookInfo"></CommandBinding>
+    </Window.CommandBindings>
+
+    <Border BorderBrush="{DynamicResource BorderBrushColor}" BorderThickness="2" TextElement.Foreground="{StaticResource PrimaryHueMidBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+
+            <Button Command="local:Command.CloseCommand"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"                 
+                Grid.Column="1" Margin="2"
+                MaxHeight="50" MaxWidth="50" Background="White" BorderThickness="0"
+                VerticalAlignment="Top" HorizontalAlignment="Right">
+
+                <materialDesign:PackIcon Kind="Close" Foreground="Black" />
+            </Button>
+            <Rectangle x:Name="image" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Width="150" Height="180" Margin="10"
+                Stroke="{DynamicResource BorderBrushColor}" StrokeDashArray="4" >
+            </Rectangle>
+            <Button  Command="local:Command.AddImageCommand" Opacity="1" Content="{DynamicResource AddImage}"
+                    Grid.Row="0" Grid.Column="1" MaxWidth="160" VerticalAlignment="Bottom" Margin="0 0 30 0"></Button>
+            <TextBox x:Name="nameField"
+                Grid.Row="1" Grid.Column="1" 
+                Style="{StaticResource MaterialDesignTextBox}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                FontSize="14"
+                Foreground="gray"
+                materialDesign:TextFieldAssist.HasClearButton="True" MaxWidth="180px" MinWidth="180px" Height="27" >
+                <materialDesign:HintAssist.Hint>
+                    <TextBlock Text="{DynamicResource BookName}"/>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <TextBox x:Name="authorField"
+                Grid.Row="2" Grid.Column="1" 
+                Style="{StaticResource MaterialDesignTextBox}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                FontSize="14"
+                Foreground="gray"
+                materialDesign:TextFieldAssist.HasClearButton="True" MaxWidth="180px" MinWidth="180px" Height="27" >
+                <materialDesign:HintAssist.Hint>
+                    <TextBlock Text="{DynamicResource Author}"/>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <TextBox x:Name="descriptionField"
+                Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" 
+                Style="{StaticResource MaterialDesignTextBox}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                FontSize="14" TextWrapping="Wrap"
+                Foreground="gray"
+                materialDesign:TextFieldAssist.HasClearButton="True" Margin="20 0 15 0" MinWidth="345" Height="50" >
+                <materialDesign:HintAssist.Hint>
+                    <TextBlock Text="{DynamicResource Description}"/>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <TextBox x:Name="priceField"
+                Grid.Row="3" Grid.Column="1" 
+                Style="{StaticResource MaterialDesignTextBox}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                FontSize="14"
+                Foreground="gray"
+                materialDesign:TextFieldAssist.HasClearButton="True"  MaxWidth="180px" MinWidth="180px" Height="27" >
+                <materialDesign:HintAssist.Hint>
+                    <TextBlock Text="{DynamicResource Price}"/>
+                </materialDesign:HintAssist.Hint>
+            </TextBox>
+            <ListBox Grid.Row="4" Grid.RowSpan="2" HorizontalAlignment="left" MaxWidth="300"
+                Style="{StaticResource MaterialDesignChoiceChipPrimaryOutlineListBox}"
+                x:Name="BookGenre" Margin="10" Grid.ColumnSpan="2">
+                <ListBoxItem x:Name="type1"
+                Content="{DynamicResource Fantastic}" />
+                <ListBoxItem x:Name="type2"
+                Content="{DynamicResource Adventure}" />
+                <ListBoxItem x:Name="type3"
+                Content="{DynamicResource Mystic}" />
+                <ListBoxItem  x:Name="type4"                  
+                Content="{DynamicResource Sсience}" />
+                <ListBoxItem  x:Name="type5"                  
+                Content="{DynamicResource Psychology}" />
+            </ListBox>
+            <ComboBox x:Name="categoryField" SelectedValuePath="Text"
+                Grid.Row="5" Grid.Column="0" Margin="20 30 15 10" Foreground="Black" Text="{DynamicResource Category}" IsEditable="True" IsReadOnly="True">
+                <TextBlock Text="{StaticResource ArtisticGenre}"/>
+                <TextBlock Text="{StaticResource EducationalGenre}"/>
+                <TextBlock Text="{StaticResource ChildrenGenre}"/>
+                <TextBlock Text="{StaticResource BusinessGenre}"/>
+            </ComboBox>
+            <local:RatingControl x:Name="ratingControl" Grid.Row="3" Grid.Column="0" />
+            <Button x:Name="EditBtn" Command="local:Command.UpdateCommand" Opacity="1"
+                Grid.Row="7" Grid.ColumnSpan="2" Margin="20" Content="{DynamicResource Edit}"></Button>
+            <Button x:Name="AddBtn" Command="local:Command.AddCommand" Visibility="Collapsed"
+                Grid.Row="7" Grid.ColumnSpan="2" Margin="20" Content="{DynamicResource Add}"></Button>
+            
+        </Grid>
+    </Border>
+</Window>

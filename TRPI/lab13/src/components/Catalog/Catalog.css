@@ -1,0 +1,19 @@
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+  width: 90%;
+}
+
+.catalog .card {
+  margin-bottom: 20px;
+}
+
+.container{
+  margin:50px;
+}
+
+.null{
+  color:gray;
+}

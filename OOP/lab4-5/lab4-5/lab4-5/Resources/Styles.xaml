@@ -1,0 +1,162 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:lab4_5">
+
+    <Canvas x:Key="myCanvas" x:Shared="false"  Width="24" Height="24">
+        <Ellipse Fill="Black" Width="5" Height="5" Canvas.Left="9" Canvas.Top="4"/>
+        <Ellipse Fill="Black" Width="5" Height="5" Canvas.Left="9" Canvas.Top="10"/>
+        <Ellipse Fill="Black" Width="5" Height="5" Canvas.Left="9" Canvas.Top="16"/>
+    </Canvas>
+
+    <Style x:Key="FillHeader" TargetType="Rectangle">
+        <Setter Property="Fill" Value="CornflowerBlue"  ></Setter>
+    </Style>
+
+    <Style x:Key="FillSidePanel" TargetType="Rectangle">
+        <Setter Property="Fill" Value="CornflowerBlue"  ></Setter>
+    </Style>
+
+    <Style x:Key="NameOfCategory" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16" ></Setter>
+        <Setter Property="Margin" Value="10 10 0 5" ></Setter>
+    </Style>
+
+    <Style x:Key="Categories" TargetType="Button">
+        <Setter Property="Foreground" Value="black"></Setter>
+        <Setter Property="FontSize" Value="13"></Setter>
+        <Setter Property="Margin" Value="15 0 0 0"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="CheckBox" TargetType="CheckBox">
+        <Setter Property="Margin" Value="15 0 0 0"></Setter>
+        <Setter Property="IsThreeState" Value="False"></Setter>
+        <Setter Property="IsChecked" Value="False"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+    </Style>
+
+    <Style x:Key="StackPanelStyle" TargetType="{x:Type StackPanel}">
+
+        <Setter Property="Height" Value="250"/>
+        <Setter Property="Width" Value="170"/>
+    </Style>
+
+    <Style x:Key="StackPanelContentStyle" TargetType="{x:Type StackPanel}">
+
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Height" Value="260"/>
+        <Setter Property="Width" Value="170"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Background" Value="Transparent"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#F0F3F7"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ImageStyle" TargetType="{x:Type Image}">
+        <Setter Property="Stretch" Value="UniformToFill"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Height" Value="160"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+    <Style x:Key="ButtonDescription" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="-40,0,0,15"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <Grid>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Popup x:Name="menuPopup" IsOpen="{TemplateBinding IsMouseOver}" StaysOpen="True" PlacementTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                                <Border Background="White" BorderBrush="CornflowerBlue" BorderThickness="1">
+                                    <StackPanel>
+                                        <Button x:Name="btnEdit" Command="local:Command.UpdateCommand" Style="{StaticResource MaterialDesignFlatButton}" Margin="1" Height="25" FontSize="12" Content="{DynamicResource Edit}" />
+                                        <Button x:Name="btnDelete" Command="local:Command.DeleteCommand" Style="{StaticResource MaterialDesignFlatButton}" Margin="1" Height="25" FontSize="12" Content="{DynamicResource Delete}" />
+                                    </StackPanel>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="Transparent"/>
+
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="Height" Value="260"/>
+        <Setter Property="Width" Value="170"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#F0F3F7"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonContent" TargetType="Button" >
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="AddButtonStyle" TargetType="Button">
+        <Setter Property="Opacity" Value="1"/>
+        <Setter Property="Content" Value="+"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="FontSize" Value="50"/>
+        <Setter Property="Foreground" Value="white"/>
+        <Setter Property="Command" Value="local:Command.AddCommand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightGray"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

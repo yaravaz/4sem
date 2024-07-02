@@ -1,0 +1,17 @@
+.container {
+  text-align: center;
+  margin-top:20%;
+  font-size:xx-large;
+}
+
+p{
+  border: 2;
+}
+
+Button{
+  font-size: x-large;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  min-width: 100px;
+}

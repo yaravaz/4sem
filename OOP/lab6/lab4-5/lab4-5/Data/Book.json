@@ -1,0 +1,72 @@
+[
+  {
+    "BookGenreValue": "psyhology",
+    "ProductCode": 1,
+    "PName": "Жутко громко и запредельно близко",
+    "PAuthor": "Джонатан Сафран Фоер",
+    "Price": 5.2999999999999998,
+    "Rating": 4.4000000000000004,
+    "PImage": "cover1.jpg",
+    "PDescription": "Роман Фоера \u00ABЖутко громко и запредельно близко\u00BB \u2013 это трогательная, глубокая, искренняя и щемящая сердце история, рассказанная девятилетним мальчиком, отец которого погиб в одной из башен-близнецов 11 сентября 2001 года.",
+    "isActive": 0,
+    "BookGenre": 5,
+    "BookCategory": "Художественная",
+    "bookGenre": null
+  },
+  {
+    "BookGenreValue": "фантастика",
+    "ProductCode": 2,
+    "PName": "Гарри Поттер",
+    "PAuthor": "Джоун Роулинг",
+    "Price": 88,
+    "Rating": 2,
+    "PImage": "cover2.jpg",
+    "PDescription": "лыавоитпдыкыдпекркыепркдеыпрвекпшркве",
+    "isActive": 1,
+    "BookGenre": 1,
+    "BookCategory": "Детская",
+    "bookGenre": null
+  },
+  {
+    "BookGenreValue": "приключения",
+    "ProductCode": 3,
+    "PName": "Маленькие женщины",
+    "PAuthor": "Луиза Мэй Олкотт",
+    "Price": 23.399999999999999,
+    "Rating": 3.1000000000000001,
+    "PImage": "cover3.jpg",
+    "PDescription": "пкоиотвпкодитвкпи",
+    "isActive": 1,
+    "BookGenre": 2,
+    "BookCategory": "Учебная",
+    "bookGenre": null
+  },
+  {
+    "BookGenreValue": "мистика",
+    "ProductCode": 4,
+    "PName": "Автостопом по галактике",
+    "PAuthor": "Адамс Дуглас",
+    "Price": 12.4,
+    "Rating": 2.5,
+    "PImage": "cover4.jpg",
+    "PDescription": "паитуеоритен",
+    "isActive": 1,
+    "BookGenre": 3,
+    "BookCategory": "Бизнес",
+    "bookGenre": null
+  },
+  {
+    "BookGenreValue": "психология",
+    "ProductCode": 5,
+    "PName": "Жутко громко и запредельно близко",
+    "PAuthor": "Джонатан Сафран Фоер",
+    "Price": 16.600000000000001,
+    "Rating": 4.4000000000000004,
+    "PImage": "cover1.jpg",
+    "PDescription": "Роман Фоера \u00ABЖутко громко и запредельно близко\u00BB \u2013 это трогательная, глубокая, искренняя и щемящая сердце история, рассказанная девятилетним мальчиком, отец которого погиб в одной из башен-близнецов 11 сентября 2001 года.",
+    "isActive": 1,
+    "BookGenre": 5,
+    "BookCategory": "Художественная",
+    "bookGenre": null
+  }
+]

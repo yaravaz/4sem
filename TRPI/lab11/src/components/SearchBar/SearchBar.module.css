@@ -1,0 +1,9 @@
+.search{
+    width: 300px;
+    height: 25px;
+    background-color: rgb(241, 248, 255);
+    border-radius: 10px;
+}
+.box{
+    font-size:smaller ;
+}

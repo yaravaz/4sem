@@ -1,0 +1,9 @@
+.todo-list {
+    list-style-type:decimal;
+    padding: 0;
+    margin: 30px;
+}
+  
+.todo-list li {
+    margin-bottom: 10px;
+}

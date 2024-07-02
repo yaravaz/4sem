@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="Fantastic">фантастика</system:String>
+    <system:String x:Key="Adventure">приключения</system:String>
+    <system:String x:Key="Mystic">мистика</system:String>
+    <system:String x:Key="Sсience">научпоп</system:String>
+    <system:String x:Key="Psychology">психология</system:String>
+    <system:String x:Key="Search">Поиск</system:String>
+    <system:String x:Key="Category">Категория</system:String>
+    <system:String x:Key="XydLit">Художественная литература</system:String>
+    <system:String x:Key="LearnLit">Учебная литература</system:String>
+    <system:String x:Key="KidLit">Детская литература</system:String>
+    <system:String x:Key="BisnesLit">Бизнес-литература</system:String>
+    <system:String x:Key="Price">Цена</system:String>
+    <system:String x:Key="From">от</system:String>
+    <system:String x:Key="To">до</system:String>
+    <system:String x:Key="Filters">Фильтры</system:String>
+    <system:String x:Key="Rating">Рейтинг</system:String>
+    <system:String x:Key="Author">Автор</system:String>
+    <system:String x:Key="Find">Найти</system:String>
+    <system:String x:Key="Edit">Изменить</system:String>
+    <system:String x:Key="Delete">Удалить</system:String>
+    <system:String x:Key="Add">Добавить</system:String>
+    <system:String x:Key="AddImage">Добавить обложку</system:String>
+    <system:String x:Key="BookName">Название</system:String>
+    <system:String x:Key="Description">Описание</system:String>
+    <system:String x:Key="ArtisticGenre">Художественная</system:String>
+    <system:String x:Key="EducationalGenre">Учебная</system:String>
+    <system:String x:Key="ChildrenGenre">Детская</system:String>
+    <system:String x:Key="BusinessGenre">Бизнес</system:String>
+    <system:String x:Key="Genre">Жанр</system:String>
+
+
+</ResourceDictionary>

@@ -1,0 +1,130 @@
+﻿<Window x:Class="lab8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab8"
+        xmlns:vm="clr-namespace:lab8.ViewModels" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1000">
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="DataGridSelectedRowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource MaterialDesignSelection}" />
+                    <Setter Property="Foreground" Value="{DynamicResource MaterialDesignSelectionForeground}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="tab">
+            <TabItem x:Name="books" Header="Книги">
+                <DockPanel>
+                    <ScrollViewer>
+                        <DataGrid SelectedIndex="{Binding IndexBook}" ItemsSource="{Binding Tableb}" RowStyle="{StaticResource DataGridSelectedRowStyle}" AutoGenerateColumns="False" x:Name="bookGrid" CanUserAddRows="True" CanUserResizeColumns="False" DockPanel.Dock="Top" Height="360">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="CellClickHandler"/>
+                                </Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignTextBlock}">
+                                    <EventSetter Event="MouseDown" Handler="TextBlock_MouseDown"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <!--<DataGridTextColumn Binding="{Binding id_book}" Header="ID" Width="Auto"/>-->
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding bname}" Header="Название" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding author}" Header="Автор" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding publish_year}" Header="Год издания" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding publisher}" Header="Издатель" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding num_pages}" Header="Страницы" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding num_chapt}" Header="Главы" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding format}" Header="Формат" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding size}" Header="Размер" Width="Auto"/>
+                                <DataGridTemplateColumn Header="Обложка" Width="Auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Name="StackUrl">
+                                                <TextBlock x:Name="url" Text="{Binding image, Mode=TwoWay}" Cursor="Hand" Visibility="Collapsed"/>
+                                                <Image x:Name="image" Width="100" Height="130" Source="{Binding ElementName=url, Path=Text}" Cursor="Hand" HorizontalAlignment="Left" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </DockPanel>
+            </TabItem>
+            <TabItem x:Name="authors" Header="Авторы">
+                <DockPanel>
+                    <DataGrid SelectedIndex="{Binding IndexAuthor}" RowStyle="{StaticResource DataGridSelectedRowStyle}" AutoGenerateColumns="False" x:Name="authorGrid" CanUserAddRows="True" CanUserResizeColumns="False" ItemsSource="{Binding Tablea}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding id_author}" Header="ID" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding psevdo}" Header="Псевдоним" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding country}" Header="Страна" Width="Auto" MaxWidth="100"/>
+                            <DataGridTextColumn Binding="{Binding byear}" Header="Год рождения" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal"  Grid.Row="1" Height="100">
+                    <Button Command="{Binding UpCommand}" CommandParameter="{Binding ElementName=tab, Path=SelectedIndex}" Style="{DynamicResource Button}" HorizontalAlignment="Left" Margin="60 0 0 0" Grid.Row="1" Width="40" Height="32">
+                        <materialDesign:PackIcon Kind="Undo"></materialDesign:PackIcon>
+                    </Button>
+                    <Button Command="{Binding DownCommand}" CommandParameter="{Binding ElementName=tab, Path=SelectedIndex}" Style="{DynamicResource Button}" HorizontalAlignment="Left" Margin="10 0 0 0" Grid.Row="1" Width="40" Height="32">
+                        <materialDesign:PackIcon Kind="Redo"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+                <Button Command="{Binding UpdateCommand}" Content="Сохранить" HorizontalAlignment="Left" Margin="29,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="43" Width="150"/>
+                <Button Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=tab, Path=SelectedIndex}" Content="Удалить" HorizontalAlignment="Left" Margin="29,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="43" Width="150"/>
+            </StackPanel>
+            <TabControl x:Name="queries" Height="245" Width="766" Margin="30 0 0 0">
+                <TabItem x:Name="usualQuery" Header="запрос">
+                    <ScrollViewer>
+                        <DataGrid SelectedIndex="{Binding IndexQuery}" RowStyle="{StaticResource DataGridSelectedRowStyle}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="queryGrid" CanUserAddRows="False" CanUserResizeColumns="False" ItemsSource="{Binding TableQuery}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding bname}" Header="Название" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding psevdo}" Header="Автор" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding country}" Header="Страна" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding size}" Header="Размер" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding num_pages}" Header="Страницы" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="paramQuery" Header="запрос с параметрами">
+                    <ScrollViewer>
+                        <DataGrid SelectedIndex="{Binding IndexParam}" RowStyle="{StaticResource DataGridSelectedRowStyle}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="paramqueryGrid" CanUserAddRows="True" CanUserResizeColumns="False" ItemsSource="{Binding TableParam}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding bname}" Header="Название" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding psevdo}" Header="Автор" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding num_pages}" Header="Страницы" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding num_chapt}" Header="Главы" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding size}" Header="Размер" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding format}" Header="Формат" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище V_MyBASEModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ЗАКАЗЧИКИ">
+          <Key>
+            <PropertyRef Name="Наименование_фирмы" />
+          </Key>
+          <Property Name="Наименование_фирмы" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Телефон" Type="nchar" MaxLength="13" />
+          <Property Name="Контактное_лицо" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ЗАКАЗЫ">
+          <Key>
+            <PropertyRef Name="ID_заказа" />
+          </Key>
+          <Property Name="ID_заказа" Type="int" Nullable="false" />
+          <Property Name="Товар" Type="nvarchar" MaxLength="20" />
+          <Property Name="Количество" Type="int" />
+          <Property Name="Дата" Type="date" />
+          <Property Name="Адрес" Type="nvarchar" MaxLength="50" />
+          <Property Name="Вид_доставки" Type="nvarchar" MaxLength="20" />
+          <Property Name="Заказчик" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ТОВАРЫ">
+          <Key>
+            <PropertyRef Name="Наименование_товара" />
+          </Key>
+          <Property Name="Наименование_товара" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Цена" Type="real" Nullable="false" />
+          <Property Name="Описание" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__ЗАКАЗЫ__Заказчик__4F7CD00D">
+          <End Role="ЗАКАЗЧИКИ" Type="Self.ЗАКАЗЧИКИ" Multiplicity="0..1" />
+          <End Role="ЗАКАЗЫ" Type="Self.ЗАКАЗЫ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ЗАКАЗЧИКИ">
+              <PropertyRef Name="Наименование_фирмы" />
+            </Principal>
+            <Dependent Role="ЗАКАЗЫ">
+              <PropertyRef Name="Заказчик" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ЗАКАЗЫ__Товар__4E88ABD4">
+          <End Role="ТОВАРЫ" Type="Self.ТОВАРЫ" Multiplicity="0..1" />
+          <End Role="ЗАКАЗЫ" Type="Self.ЗАКАЗЫ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТОВАРЫ">
+              <PropertyRef Name="Наименование_товара" />
+            </Principal>
+            <Dependent Role="ЗАКАЗЫ">
+              <PropertyRef Name="Товар" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище V_MyBASEModelContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ЗАКАЗЧИКИ" EntityType="Self.ЗАКАЗЧИКИ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ЗАКАЗЫ" EntityType="Self.ЗАКАЗЫ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ТОВАРЫ" EntityType="Self.ТОВАРЫ" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ЗАКАЗЫ__Заказчик__4F7CD00D" Association="Self.FK__ЗАКАЗЫ__Заказчик__4F7CD00D">
+            <End Role="ЗАКАЗЧИКИ" EntitySet="ЗАКАЗЧИКИ" />
+            <End Role="ЗАКАЗЫ" EntitySet="ЗАКАЗЫ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ЗАКАЗЫ__Товар__4E88ABD4" Association="Self.FK__ЗАКАЗЫ__Товар__4E88ABD4">
+            <End Role="ТОВАРЫ" EntitySet="ТОВАРЫ" />
+            <End Role="ЗАКАЗЫ" EntitySet="ЗАКАЗЫ" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="V_MyBASEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ЗАКАЗЧИКИ">
+          <Key>
+            <PropertyRef Name="Наименование_фирмы" />
+          </Key>
+          <Property Name="Наименование_фирмы" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Телефон" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="Контактное_лицо" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ЗАКАЗЫ" Relationship="Self.FK__ЗАКАЗЫ__Заказчик__4F7CD00D" FromRole="ЗАКАЗЧИКИ" ToRole="ЗАКАЗЫ" />
+        </EntityType>
+        <EntityType Name="ЗАКАЗЫ">
+          <Key>
+            <PropertyRef Name="ID_заказа" />
+          </Key>
+          <Property Name="ID_заказа" Type="Int32" Nullable="false" />
+          <Property Name="Товар" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Количество" Type="Int32" />
+          <Property Name="Дата" Type="DateTime" Precision="0" />
+          <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Вид_доставки" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Заказчик" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ЗАКАЗЧИКИ" Relationship="Self.FK__ЗАКАЗЫ__Заказчик__4F7CD00D" FromRole="ЗАКАЗЫ" ToRole="ЗАКАЗЧИКИ" />
+          <NavigationProperty Name="ТОВАРЫ" Relationship="Self.FK__ЗАКАЗЫ__Товар__4E88ABD4" FromRole="ЗАКАЗЫ" ToRole="ТОВАРЫ" />
+        </EntityType>
+        <EntityType Name="ТОВАРЫ">
+          <Key>
+            <PropertyRef Name="Наименование_товара" />
+          </Key>
+          <Property Name="Наименование_товара" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Цена" Type="Single" Nullable="false" />
+          <Property Name="Описание" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ЗАКАЗЫ" Relationship="Self.FK__ЗАКАЗЫ__Товар__4E88ABD4" FromRole="ТОВАРЫ" ToRole="ЗАКАЗЫ" />
+        </EntityType>
+        <Association Name="FK__ЗАКАЗЫ__Заказчик__4F7CD00D">
+          <End Role="ЗАКАЗЧИКИ" Type="Self.ЗАКАЗЧИКИ" Multiplicity="0..1" />
+          <End Role="ЗАКАЗЫ" Type="Self.ЗАКАЗЫ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ЗАКАЗЧИКИ">
+              <PropertyRef Name="Наименование_фирмы" />
+            </Principal>
+            <Dependent Role="ЗАКАЗЫ">
+              <PropertyRef Name="Заказчик" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ЗАКАЗЫ__Товар__4E88ABD4">
+          <End Role="ТОВАРЫ" Type="Self.ТОВАРЫ" Multiplicity="0..1" />
+          <End Role="ЗАКАЗЫ" Type="Self.ЗАКАЗЫ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ТОВАРЫ">
+              <PropertyRef Name="Наименование_товара" />
+            </Principal>
+            <Dependent Role="ЗАКАЗЫ">
+              <PropertyRef Name="Товар" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="V_MyBASEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="ЗАКАЗЧИКИ" EntityType="Self.ЗАКАЗЧИКИ" />
+          <EntitySet Name="ЗАКАЗЫ" EntityType="Self.ЗАКАЗЫ" />
+          <EntitySet Name="ТОВАРЫ" EntityType="Self.ТОВАРЫ" />
+          <AssociationSet Name="FK__ЗАКАЗЫ__Заказчик__4F7CD00D" Association="Self.FK__ЗАКАЗЫ__Заказчик__4F7CD00D">
+            <End Role="ЗАКАЗЧИКИ" EntitySet="ЗАКАЗЧИКИ" />
+            <End Role="ЗАКАЗЫ" EntitySet="ЗАКАЗЫ" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ЗАКАЗЫ__Товар__4E88ABD4" Association="Self.FK__ЗАКАЗЫ__Товар__4E88ABD4">
+            <End Role="ТОВАРЫ" EntitySet="ТОВАРЫ" />
+            <End Role="ЗАКАЗЫ" EntitySet="ЗАКАЗЫ" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище V_MyBASEModelContainer" CdmEntityContainer="V_MyBASEEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="V_MyBASEModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ЗАКАЗЧИКИ">
+            <EntityTypeMapping TypeName="V_MyBASEModel.ЗАКАЗЧИКИ">
+              <MappingFragment StoreEntitySet="ЗАКАЗЧИКИ">
+                <ScalarProperty Name="Наименование_фирмы" ColumnName="Наименование_фирмы" />
+                <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+                <ScalarProperty Name="Контактное_лицо" ColumnName="Контактное_лицо" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ЗАКАЗЫ">
+            <EntityTypeMapping TypeName="V_MyBASEModel.ЗАКАЗЫ">
+              <MappingFragment StoreEntitySet="ЗАКАЗЫ">
+                <ScalarProperty Name="ID_заказа" ColumnName="ID_заказа" />
+                <ScalarProperty Name="Товар" ColumnName="Товар" />
+                <ScalarProperty Name="Количество" ColumnName="Количество" />
+                <ScalarProperty Name="Дата" ColumnName="Дата" />
+                <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+                <ScalarProperty Name="Вид_доставки" ColumnName="Вид_доставки" />
+                <ScalarProperty Name="Заказчик" ColumnName="Заказчик" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ТОВАРЫ">
+            <EntityTypeMapping TypeName="V_MyBASEModel.ТОВАРЫ">
+              <MappingFragment StoreEntitySet="ТОВАРЫ">
+                <ScalarProperty Name="Наименование_товара" ColumnName="Наименование_товара" />
+                <ScalarProperty Name="Цена" ColumnName="Цена" />
+                <ScalarProperty Name="Описание" ColumnName="Описание" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

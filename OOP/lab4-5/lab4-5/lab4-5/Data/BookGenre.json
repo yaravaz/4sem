@@ -1,0 +1,22 @@
+[
+  {
+    "BookGenreId": 1,
+    "PGenre": "Fantastic"
+  },
+  {
+    "BookGenreId": 2,
+    "PGenre": "Adventure"
+  },
+  {
+    "BookGenreId": 3,
+    "PGenre": "Mystic"
+  },
+  {
+    "BookGenreId": 4,
+    "PGenre": "Sciense"
+  },
+  {
+    "BookGenreId": 5,
+    "PGenre": "Psychology"
+  }
+]

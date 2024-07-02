@@ -1,0 +1,110 @@
+﻿<Window x:Class="lab9.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:lab9"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="850">
+    <Window.Resources>
+        <Style x:Key="DataGridSelectedRowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="{DynamicResource MaterialDesignPaper}" />
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource MaterialDesignSelection}" />
+                    <Setter Property="Foreground" Value="{DynamicResource MaterialDesignSelectionForeground}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="DataGridCellComboBoxStyle" TargetType="DataGridCell">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Grid>
+                            <ComboBox ItemsSource="{Binding DataContext.AuthorsDT, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                DisplayMemberPath="Nickname" SelectedItem="{Binding Author, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.AddAuthorToBookCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ComboBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left">
+            <StackPanel Orientation="Horizontal" Margin="10 10 70 0">
+                <TextBox Text="{Binding SearchText}" Width="180" Margin="6, 3"/>
+                <ComboBox Width="100" Margin="3" ItemsSource="{Binding SearchByList}" SelectedIndex="{Binding SelectedSearchIndex}"/>
+                <Button Content="Найти" Command="{Binding OnSelectionSearchByChangedCommand}" Margin="6, 3"/>
+            </StackPanel>
+            <Button Content="Добавить" Command="{Binding AddingItemCommand}" Margin="10,5"/>
+            <Button Content="Удалить" Command="{Binding DeleteItemCommand}" Margin="10,5"/>
+            <Button Content="Сохранить" Command="{Binding SaveChangesCommand}" Margin="10,5"/>
+        </StackPanel>
+        
+        <TabControl SelectedIndex="{Binding PageIndex}" Margin="10 80 10 20">
+            <TabItem Header="Книги">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*" />
+                            <ColumnDefinition Width="0.3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid Grid.Column="0" ItemsSource="{Binding BooksDT}" AutoGenerateColumns="False" SelectedItem="{Binding selItem}" RowStyle="{StaticResource DataGridSelectedRowStyle}" SelectionChanged="DataGrid_SelectionChanged" Grid.ColumnSpan="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Название" Width="auto"/>
+                                <DataGridTextColumn Binding="{Binding Publisher}" Header="Издательство" Width="auto"/>
+                                <DataGridTextColumn Binding="{Binding PublishYear}" Header="Год публикации" Width="auto"/>
+                                <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="auto"/>
+                                <DataGridTemplateColumn Header="Автор" CellStyle="{StaticResource DataGridCellComboBoxStyle}">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Author.Nickname}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Авторы">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*" />
+                            <ColumnDefinition Width="0.3*" />
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid Grid.Column="0" Width="Auto" ItemsSource="{Binding AuthorsDT}" AutoGenerateColumns="False" SelectedItem="{Binding selItem}" RowStyle="{StaticResource DataGridSelectedRowStyle}" SelectionChanged="DataGrid_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Nickname}" Header="Псевдоним" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding Country}" Header="Страна" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding BirthYear}" Header="Год рождения" Width="Auto"/>
+                                <DataGridTextColumn Binding="{Binding BookNames}" IsReadOnly="true" Header="Книги" Width="Auto"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Grid Grid.Column="1" Height="Auto" HorizontalAlignment="Center" Margin="0 40">
+                            <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="center">
+                                <ComboBox ItemsSource="{Binding BooksDT}" DisplayMemberPath="Name" Width="150" SelectedItem="{Binding SelBookForAuthor}" Margin="10"/>
+                                <Button Command="{Binding AddBookToAuthorCommand}" Content="Добавить книгу" Margin="10" />
+                                <Button Command="{Binding DeleteBookFromAuthorCommand}" Content="Удалить книгу" Margin="10"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding BooksTextBlock}" Margin="2 200 0 0" TextWrapping="WrapWithOverflow" Width="200" Height="40" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

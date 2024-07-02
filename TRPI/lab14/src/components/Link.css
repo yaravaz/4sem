@@ -1,0 +1,21 @@
+.link {
+    margin-left: 4px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #459fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: large;
+  }
+  
+  .link:hover {
+    background-color: #2b70b9;
+  }
+  
+  .link:disabled {
+    background-color: #a6a5a5;
+    cursor: not-allowed;
+  }

@@ -1,0 +1,8 @@
+.con{
+    margin: 100px;
+    padding: 20px;
+    border: 1px dashed cadetblue;
+    width: 300px;
+    height: auto;
+    border-radius: 5%;
+}
